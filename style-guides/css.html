@@ -1,0 +1,138 @@
+<h1>CSS</h1>
+
+<p>Welcome to the Social Tables CSS Styleguide. Here is where you can learn more about our general philosophies and examples of how we write CSS, regardless of the preprocessor (LESS, SASS).</p>
+
+<h2>Coding Style</h2>
+
+<h3>Spacing</h3>
+
+<ul><li>Put spaces after <code>:</code> in property declarations.</li><li>Put spaces before <code>{</code> in rule declarations.</li><li>Put line breaks between rulesets.</li><li>When grouping selectors, keep individual selectors to a single line.</li><li>Place closing braces of declaration blocks on a new line.</li><li>Each declaration should appear on its own line for more accurate error reporting.</li></ul>
+
+<h3>Formatting</h3>
+
+<ul><li>Use rgb() or rgba() for color instead of hex codes, i.e: <code>#000</code> or specific colors, i.e: <code>white</code> or <code>blue</code></li><li>Use <code>/* */</code> for comment blocks.</li><li>Avoid specifying units for zero values, e.g., <code>margin: 0</code>; instead of <code>margin: 0px;</code>.</li><li>Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values.</li></ul>
+
+<p>For example, if you want to apply a 5px right margin, write <code>margin-right: 5px</code> instead of <code>margin: 0 5px 0 0</code>.</p>
+
+<p>However, if you need to apply a 5px margin to both the right and left, use the shorthand and write <code>margin: 0 5px</code> vs separate properties for the right and left margins.</p>
+
+<h2>Rules</h2>
+
+<p>Please refer to the following rules when writing style declarations.</p>
+
+<h3>Use class selectors</h3>
+
+<p>Use only class selectors instead of ID, attribute, or tag selectors when writing declarations.</p>
+
+<p>This allows us to maintain a consistent specificity-level amongst ourrules.</p>
+
+<p><code></code>`</p>
+
+<p>/<em> Bad </em>/</p>
+
+<h1>my-listing {</h1>
+
+<pre><code>color: rgb(50, 50, 50);	</code></pre>
+
+<p>}</p>
+
+<p>li {
+	color: rgb(50, 50, 50);
+}</p>
+
+<p>/<em> Good </em>/</p>
+
+<p>.my-listing {
+	color: rgb(50, 50, 50);
+}</p>
+
+<p><code></code>`</p>
+
+<h3>Use lower-case with dashes for naming classes, IDs</h3>
+
+<p>When naming your classes and IDs, use lower case with dashes to separate multiple words.</p>
+
+<p>Even if an element is unique, apply its styles with a class instead of an ID.</p>
+
+<h3>Only use nesting for state-representations and psuedo classes</h3>
+
+<p>When using a preprocessor such as SASS or LESS, refrain from using nesting unless you are creating a certain set of styles for a given state (e.x: <code>.selected</code>) or a pseudo class (e.x: <code>:hover</code>).</p>
+
+<p><code></code>`</p>
+
+<p>/<em> Bad </em>/</p>
+
+<p>.employee-entry {
+	background-color: rgb(50, 50, 50);</p>
+
+<pre><code>.employee-entry-name {
+	background-color: rgb(245, 245, 245);
+}
+
+span {
+	color: rgb(245, 245, 245);
+
+	a {
+		color: rgb(245, 12, 100);
+	}
+}</code></pre>
+
+<p>}</p>
+
+<p>/<em> Good </em>/</p>
+
+<p>.employee-entry {
+	background-color: rgb(50, 50, 50);
+	&amp;.selected {
+		background-color: rgb(245, 245, 245);
+	}
+	&amp;:hover {
+		background-color: rgb(210, 210, 210);
+	}
+}</p>
+
+<p><code></code>`</p>
+
+<h3>Property Order</h3>
+
+<p>When declaring properties within a declaration, order your properties like so:</p>
+
+<ul><li>Position<ul><li><code>position</code> should be first</li><li>Order of other positional properties (<code>top</code>, <code>right</code>, etc...) does not matter</li></ul></li><li>Display/Box Model<ul><li><code>display</code> should be first</li><li>Order of other display related properties does not matter</li></ul></li><li>Color<ul><li>Order does not matter</li></ul></li><li>Font<ul><li>Order does not matter</li></ul></li><li>Other styles<ul><li>Order does not matter</li></ul></li></ul>
+
+<p><code>
+	.my-element {
+		/* Positional Properties */
+		position: absolute;
+		top: 10px;
+		right: 15px;
+		bottom: 0;
+		left: 0;
+		/* Box Model properties */
+		display: block;
+		margin: 4px 10px 2px 9px;
+		padding: 4px 10px 2px 9px;
+		border: solid 1px;
+		border-radius: 12px;
+		/* Color properties */
+		color: rgb(190, 210, 10);
+		background-color: rgb(210, 210, 210);
+		border-color: rgb(11, 23, 1);
+		/* Font properties */
+		font-size: 12px;
+		font-weight: bold;
+		/* Other style properties */
+		text-align: center;
+		box-shadow: 10px 10px 5px #888888;
+	}
+</code></p>
+
+<h2>File Structure</h2>
+
+<h2>CSS Reset</h2>
+
+<h2>Examples</h2>
+
+<h2>More Reading</h2>
+<!-- SMUDGEDOWN-START
+Q1NTJTBBJTNEJTNEJTNEJTNEJTNEJTNEJTNEJTBBJTBBV2VsY29tZSUyMHRvJTIwdGhlJTIwU29jaWFsJTIwVGFibGVzJTIwQ1NTJTIwU3R5bGVndWlkZS4lMjBIZXJlJTIwaXMlMjB3aGVyZSUyMHlvdSUyMGNhbiUyMGxlYXJuJTIwbW9yZSUyMGFib3V0JTIwb3VyJTIwZ2VuZXJhbCUyMHBoaWxvc29waGllcyUyMGFuZCUyMGV4YW1wbGVzJTIwb2YlMjBob3clMjB3ZSUyMHdyaXRlJTIwQ1NTJTJDJTIwcmVnYXJkbGVzcyUyMG9mJTIwdGhlJTIwcHJlcHJvY2Vzc29yJTIwKExFU1MlMkMlMjBTQVNTKS4lMEElMEElMEElMjMlMjMlMjBDb2RpbmclMjBTdHlsZSUwQSUwQSUyMyUyMyUyMyUyMFNwYWNpbmclMEElMEEqJTIwUHV0JTIwc3BhY2VzJTIwYWZ0ZXIlMjAlNjAlNjAlNjAlM0ElNjAlNjAlNjAlMjBpbiUyMHByb3BlcnR5JTIwZGVjbGFyYXRpb25zLiUwQSolMjBQdXQlMjBzcGFjZXMlMjBiZWZvcmUlMjAlNjAlNjAlNjAlN0IlNjAlNjAlNjAlMjBpbiUyMHJ1bGUlMjBkZWNsYXJhdGlvbnMuJTBBKiUyMFB1dCUyMGxpbmUlMjBicmVha3MlMjBiZXR3ZWVuJTIwcnVsZXNldHMuJTBBKiUyMFdoZW4lMjBncm91cGluZyUyMHNlbGVjdG9ycyUyQyUyMGtlZXAlMjBpbmRpdmlkdWFsJTIwc2VsZWN0b3JzJTIwdG8lMjBhJTIwc2luZ2xlJTIwbGluZS4lMEEqJTIwUGxhY2UlMjBjbG9zaW5nJTIwYnJhY2VzJTIwb2YlMjBkZWNsYXJhdGlvbiUyMGJsb2NrcyUyMG9uJTIwYSUyMG5ldyUyMGxpbmUuJTBBKiUyMEVhY2glMjBkZWNsYXJhdGlvbiUyMHNob3VsZCUyMGFwcGVhciUyMG9uJTIwaXRzJTIwb3duJTIwbGluZSUyMGZvciUyMG1vcmUlMjBhY2N1cmF0ZSUyMGVycm9yJTIwcmVwb3J0aW5nLiUwQSUwQSUyMyUyMyUyMyUyMEZvcm1hdHRpbmclMEElMEEqJTIwVXNlJTIwcmdiKCklMjBvciUyMHJnYmEoKSUyMGZvciUyMGNvbG9yJTIwaW5zdGVhZCUyMG9mJTIwaGV4JTIwY29kZXMlMkMlMjBpLmUlM0ElMjAlNjAlNjAlNjAlMjMwMDAlNjAlNjAlNjAlMjBvciUyMHNwZWNpZmljJTIwY29sb3JzJTJDJTIwaS5lJTNBJTIwJTYwJTYwJTYwd2hpdGUlNjAlNjAlNjAlMjBvciUyMCU2MCU2MCU2MGJsdWUlNjAlNjAlNjAlMEEqJTIwVXNlJTIwJTYwJTYwJTYwJTJGKiUyMColMkYlNjAlNjAlNjAlMjBmb3IlMjBjb21tZW50JTIwYmxvY2tzLiUwQSolMjBBdm9pZCUyMHNwZWNpZnlpbmclMjB1bml0cyUyMGZvciUyMHplcm8lMjB2YWx1ZXMlMkMlMjBlLmcuJTJDJTIwJTYwJTYwJTYwbWFyZ2luJTNBJTIwMCU2MCU2MCU2MCUzQiUyMGluc3RlYWQlMjBvZiUyMCU2MCU2MCU2MG1hcmdpbiUzQSUyMDBweCUzQiU2MCU2MCU2MC4lMEEqJTIwU3RyaXZlJTIwdG8lMjBsaW1pdCUyMHVzZSUyMG9mJTIwc2hvcnRoYW5kJTIwZGVjbGFyYXRpb25zJTIwdG8lMjBpbnN0YW5jZXMlMjB3aGVyZSUyMHlvdSUyMG11c3QlMjBleHBsaWNpdGx5JTIwc2V0JTIwYWxsJTIwdGhlJTIwYXZhaWxhYmxlJTIwdmFsdWVzLiUwQSUwQUZvciUyMGV4YW1wbGUlMkMlMjBpZiUyMHlvdSUyMHdhbnQlMjB0byUyMGFwcGx5JTIwYSUyMDVweCUyMHJpZ2h0JTIwbWFyZ2luJTJDJTIwd3JpdGUlMjAlNjAlNjAlNjBtYXJnaW4tcmlnaHQlM0ElMjA1cHglNjAlNjAlNjAlMjBpbnN0ZWFkJTIwb2YlMjAlNjAlNjAlNjBtYXJnaW4lM0ElMjAwJTIwNXB4JTIwMCUyMDAlNjAlNjAlNjAuJTBBJTBBSG93ZXZlciUyQyUyMGlmJTIweW91JTIwbmVlZCUyMHRvJTIwYXBwbHklMjBhJTIwNXB4JTIwbWFyZ2luJTIwdG8lMjBib3RoJTIwdGhlJTIwcmlnaHQlMjBhbmQlMjBsZWZ0JTJDJTIwdXNlJTIwdGhlJTIwc2hvcnRoYW5kJTIwYW5kJTIwd3JpdGUlMjAlNjAlNjAlNjBtYXJnaW4lM0ElMjAwJTIwNXB4JTYwJTYwJTYwJTIwdnMlMjBzZXBhcmF0ZSUyMHByb3BlcnRpZXMlMjBmb3IlMjB0aGUlMjByaWdodCUyMGFuZCUyMGxlZnQlMjBtYXJnaW5zLiUwQSUwQSUwQSUyMyUyMyUyMFJ1bGVzJTBBJTBBUGxlYXNlJTIwcmVmZXIlMjB0byUyMHRoZSUyMGZvbGxvd2luZyUyMHJ1bGVzJTIwd2hlbiUyMHdyaXRpbmclMjBzdHlsZSUyMGRlY2xhcmF0aW9ucy4lMEElMEElMjMlMjMlMjMlMjBVc2UlMjBjbGFzcyUyMHNlbGVjdG9ycyUwQSUwQVVzZSUyMG9ubHklMjBjbGFzcyUyMHNlbGVjdG9ycyUyMGluc3RlYWQlMjBvZiUyMElEJTJDJTIwYXR0cmlidXRlJTJDJTIwb3IlMjB0YWclMjBzZWxlY3RvcnMlMjB3aGVuJTIwd3JpdGluZyUyMGRlY2xhcmF0aW9ucy4lMEElMEFUaGlzJTIwYWxsb3dzJTIwdXMlMjB0byUyMG1haW50YWluJTIwYSUyMGNvbnNpc3RlbnQlMjBzcGVjaWZpY2l0eS1sZXZlbCUyMGFtb25nc3QlMjBvdXJydWxlcy4lMEElMEElNjAlNjAlNjAlMEElMEElMkYqJTIwQmFkJTIwKiUyRiUwQSUwQSUyM215LWxpc3RpbmclMjAlN0IlMEElMDljb2xvciUzQSUyMHJnYig1MCUyQyUyMDUwJTJDJTIwNTApJTNCJTA5JTBBJTdEJTBBJTBBbGklMjAlN0IlMEElMDljb2xvciUzQSUyMHJnYig1MCUyQyUyMDUwJTJDJTIwNTApJTNCJTBBJTdEJTBBJTBBJTBBJTJGKiUyMEdvb2QlMjAqJTJGJTBBJTBBLm15LWxpc3RpbmclMjAlN0IlMEElMDljb2xvciUzQSUyMHJnYig1MCUyQyUyMDUwJTJDJTIwNTApJTNCJTBBJTdEJTBBJTBBJTYwJTYwJTYwJTBBJTBBJTIzJTIzJTIzJTIwVXNlJTIwbG93ZXItY2FzZSUyMHdpdGglMjBkYXNoZXMlMjBmb3IlMjBuYW1pbmclMjBjbGFzc2VzJTJDJTIwSURzJTBBJTBBV2hlbiUyMG5hbWluZyUyMHlvdXIlMjBjbGFzc2VzJTIwYW5kJTIwSURzJTJDJTIwdXNlJTIwbG93ZXIlMjBjYXNlJTIwd2l0aCUyMGRhc2hlcyUyMHRvJTIwc2VwYXJhdGUlMjBtdWx0aXBsZSUyMHdvcmRzLiUwQSUwQUV2ZW4lMjBpZiUyMGFuJTIwZWxlbWVudCUyMGlzJTIwdW5pcXVlJTJDJTIwYXBwbHklMjBpdHMlMjBzdHlsZXMlMjB3aXRoJTIwYSUyMGNsYXNzJTIwaW5zdGVhZCUyMG9mJTIwYW4lMjBJRC4lMEElMEElMjMlMjMlMjMlMjBPbmx5JTIwdXNlJTIwbmVzdGluZyUyMGZvciUyMHN0YXRlLXJlcHJlc2VudGF0aW9ucyUyMGFuZCUyMHBzdWVkbyUyMGNsYXNzZXMlMEElMEFXaGVuJTIwdXNpbmclMjBhJTIwcHJlcHJvY2Vzc29yJTIwc3VjaCUyMGFzJTIwU0FTUyUyMG9yJTIwTEVTUyUyQyUyMHJlZnJhaW4lMjBmcm9tJTIwdXNpbmclMjBuZXN0aW5nJTIwdW5sZXNzJTIweW91JTIwYXJlJTIwY3JlYXRpbmclMjBhJTIwY2VydGFpbiUyMHNldCUyMG9mJTIwc3R5bGVzJTIwZm9yJTIwYSUyMGdpdmVuJTIwc3RhdGUlMjAoZS54JTNBJTIwJTYwJTYwJTYwLnNlbGVjdGVkJTYwJTYwJTYwKSUyMG9yJTIwYSUyMHBzZXVkbyUyMGNsYXNzJTIwKGUueCUzQSUyMCU2MCU2MCU2MCUzQWhvdmVyJTYwJTYwJTYwKS4lMEElMEElNjAlNjAlNjAlMEElMEElMkYqJTIwQmFkJTIwKiUyRiUwQSUwQS5lbXBsb3llZS1lbnRyeSUyMCU3QiUwQSUwOWJhY2tncm91bmQtY29sb3IlM0ElMjByZ2IoNTAlMkMlMjA1MCUyQyUyMDUwKSUzQiUwQSUwQSUwOS5lbXBsb3llZS1lbnRyeS1uYW1lJTIwJTdCJTBBJTA5JTA5YmFja2dyb3VuZC1jb2xvciUzQSUyMHJnYigyNDUlMkMlMjAyNDUlMkMlMjAyNDUpJTNCJTBBJTA5JTdEJTBBJTBBJTA5c3BhbiUyMCU3QiUwQSUwOSUwOWNvbG9yJTNBJTIwcmdiKDI0NSUyQyUyMDI0NSUyQyUyMDI0NSklM0IlMEElMEElMDklMDlhJTIwJTdCJTBBJTA5JTA5JTA5Y29sb3IlM0ElMjByZ2IoMjQ1JTJDJTIwMTIlMkMlMjAxMDApJTNCJTBBJTA5JTA5JTdEJTBBJTA5JTdEJTBBJTdEJTBBJTBBJTBBJTJGKiUyMEdvb2QlMjAqJTJGJTBBJTBBLmVtcGxveWVlLWVudHJ5JTIwJTdCJTBBJTA5YmFja2dyb3VuZC1jb2xvciUzQSUyMHJnYig1MCUyQyUyMDUwJTJDJTIwNTApJTNCJTBBJTA5JTI2LnNlbGVjdGVkJTIwJTdCJTBBJTA5JTA5YmFja2dyb3VuZC1jb2xvciUzQSUyMHJnYigyNDUlMkMlMjAyNDUlMkMlMjAyNDUpJTNCJTBBJTA5JTdEJTBBJTA5JTI2JTNBaG92ZXIlMjAlN0IlMEElMDklMDliYWNrZ3JvdW5kLWNvbG9yJTNBJTIwcmdiKDIxMCUyQyUyMDIxMCUyQyUyMDIxMCklM0IlMEElMDklN0QlMEElN0QlMEElMEElNjAlNjAlNjAlMEElMEElMjMlMjMlMjMlMjBQcm9wZXJ0eSUyME9yZGVyJTBBJTBBV2hlbiUyMGRlY2xhcmluZyUyMHByb3BlcnRpZXMlMjB3aXRoaW4lMjBhJTIwZGVjbGFyYXRpb24lMkMlMjBvcmRlciUyMHlvdXIlMjBwcm9wZXJ0aWVzJTIwbGlrZSUyMHNvJTNBJTBBJTBBKiUyMFBvc2l0aW9uJTBBJTA5KiUyMCU2MCU2MCU2MHBvc2l0aW9uJTYwJTYwJTYwJTIwc2hvdWxkJTIwYmUlMjBmaXJzdCUwQSUwOSolMjBPcmRlciUyMG9mJTIwb3RoZXIlMjBwb3NpdGlvbmFsJTIwcHJvcGVydGllcyUyMCglNjAlNjAlNjB0b3AlNjAlNjAlNjAlMkMlMjAlNjAlNjAlNjByaWdodCU2MCU2MCU2MCUyQyUyMGV0Yy4uLiklMjBkb2VzJTIwbm90JTIwbWF0dGVyJTBBKiUyMERpc3BsYXklMkZCb3glMjBNb2RlbCUwQSUwOSolMjAlNjAlNjAlNjBkaXNwbGF5JTYwJTYwJTYwJTIwc2hvdWxkJTIwYmUlMjBmaXJzdCUwQSUwOSolMjBPcmRlciUyMG9mJTIwb3RoZXIlMjBkaXNwbGF5JTIwcmVsYXRlZCUyMHByb3BlcnRpZXMlMjBkb2VzJTIwbm90JTIwbWF0dGVyJTBBKiUyMENvbG9yJTBBJTA5KiUyME9yZGVyJTIwZG9lcyUyMG5vdCUyMG1hdHRlciUwQSolMjBGb250JTBBJTA5KiUyME9yZGVyJTIwZG9lcyUyMG5vdCUyMG1hdHRlciUwQSolMjBPdGhlciUyMHN0eWxlcyUwQSUwOSolMjBPcmRlciUyMGRvZXMlMjBub3QlMjBtYXR0ZXIlMEElMEElNjAlNjAlNjAlMEElMDkubXktZWxlbWVudCUyMCU3QiUwQSUwOSUwOSUyRiolMjBQb3NpdGlvbmFsJTIwUHJvcGVydGllcyUyMColMkYlMEElMDklMDlwb3NpdGlvbiUzQSUyMGFic29sdXRlJTNCJTBBJTA5JTA5dG9wJTNBJTIwMTBweCUzQiUwQSUwOSUwOXJpZ2h0JTNBJTIwMTVweCUzQiUwQSUwOSUwOWJvdHRvbSUzQSUyMDAlM0IlMEElMDklMDlsZWZ0JTNBJTIwMCUzQiUwQSUwOSUwOSUyRiolMjBCb3glMjBNb2RlbCUyMHByb3BlcnRpZXMlMjAqJTJGJTBBJTA5JTA5ZGlzcGxheSUzQSUyMGJsb2NrJTNCJTBBJTA5JTA5bWFyZ2luJTNBJTIwNHB4JTIwMTBweCUyMDJweCUyMDlweCUzQiUwQSUwOSUwOXBhZGRpbmclM0ElMjA0cHglMjAxMHB4JTIwMnB4JTIwOXB4JTNCJTBBJTA5JTA5Ym9yZGVyJTNBJTIwc29saWQlMjAxcHglM0IlMEElMDklMDlib3JkZXItcmFkaXVzJTNBJTIwMTJweCUzQiUwQSUwOSUwOSUyRiolMjBDb2xvciUyMHByb3BlcnRpZXMlMjAqJTJGJTBBJTA5JTA5Y29sb3IlM0ElMjByZ2IoMTkwJTJDJTIwMjEwJTJDJTIwMTApJTNCJTBBJTA5JTA5YmFja2dyb3VuZC1jb2xvciUzQSUyMHJnYigyMTAlMkMlMjAyMTAlMkMlMjAyMTApJTNCJTBBJTA5JTA5Ym9yZGVyLWNvbG9yJTNBJTIwcmdiKDExJTJDJTIwMjMlMkMlMjAxKSUzQiUwQSUwOSUwOSUyRiolMjBGb250JTIwcHJvcGVydGllcyUyMColMkYlMEElMDklMDlmb250LXNpemUlM0ElMjAxMnB4JTNCJTBBJTA5JTA5Zm9udC13ZWlnaHQlM0ElMjBib2xkJTNCJTBBJTA5JTA5JTJGKiUyME90aGVyJTIwc3R5bGUlMjBwcm9wZXJ0aWVzJTIwKiUyRiUwQSUwOSUwOXRleHQtYWxpZ24lM0ElMjBjZW50ZXIlM0IlMEElMDklMDlib3gtc2hhZG93JTNBJTIwMTBweCUyMDEwcHglMjA1cHglMjAlMjM4ODg4ODglM0IlMEElMDklN0QlMEElNjAlNjAlNjAlMEElMEElMjMlMjMlMjBGaWxlJTIwU3RydWN0dXJlJTBBJTBBJTIzJTIzJTIwQ1NTJTIwUmVzZXQlMEElMEElMjMlMjMlMjBFeGFtcGxlcyUwQSUwQSUyMyUyMyUyME1vcmUlMjBSZWFkaW5n
+SMUDGEDOWN-END -->
