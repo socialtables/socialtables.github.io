@@ -4,10 +4,6 @@
   "private": "true",
   "description": "The goal of this repo is to codify our engineering culture and keep clear our workflow options.",
   "main": "index.js",
-  "dependencies": {
-    "smudgedown": "^1.0.1"
-  },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/socialtables/socialtables.github.io.git"
