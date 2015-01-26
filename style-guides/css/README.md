@@ -48,10 +48,17 @@ Welcome to the Social Tables CSS Styleguide. Here is where you can learn more ab
 .my-class{
 	display: block;
 }
+.my-class-2{
+    display: inline-block;
+}
 
 /* Good */
 .my-class {
 	display: block;
+}
+
+.my-class-2{
+    display: inline-block;
 }
 
 ```
@@ -113,7 +120,6 @@ Welcome to the Social Tables CSS Styleguide. Here is where you can learn more ab
 * Use ```/* */``` for comment blocks.
 * Avoid specifying units for zero values, e.g., use ```margin: 0```; instead of ```margin: 0px;```.
 * Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values.
-
  * For example, if you want to apply a 5px right margin, write ```margin-right: 5px``` instead of ```margin: 0 5px 0 0```.
  * However, if you need to apply a 5px margin to both the right and left, use the shorthand and write ```margin: 0 5px``` vs separate properties for the right and left margins.
 
@@ -121,7 +127,6 @@ Welcome to the Social Tables CSS Styleguide. Here is where you can learn more ab
 ### Preprocessor Variable Naming
 
 When naming variables in LESS/SASS, use an all lower-case, hyphen separated scheme.
-
 __NOTE:__ LESS variables are prefixed with the _@_ symbol while SASS variables are prefixed with _$_
 
 ```css
@@ -146,13 +151,11 @@ Please refer to the following rules when writing style declarations.
 ### Use class selectors
 
 Use only class selectors instead of ID, attribute, or tag selectors when writing declarations.
-
 This allows us to maintain a consistent specificity-level amongst our rules.
 
 ```css
 
 /* Bad */
-
 #my-listing {
 	color: rgb(50, 50, 50);
 }
@@ -161,9 +164,7 @@ li {
 	color: rgb(50, 50, 50);
 }
 
-
 /* Good */
-
 .my-listing {
 	color: rgb(50, 50, 50);
 }
@@ -173,13 +174,11 @@ li {
 ### Use lower-case with dashes for naming classes, IDs
 
 When naming your classes and IDs, use lower case with dashes to separate multiple words.
-
-Even if an element is unique, apply its styles with a class instead of an ID. Let IDs only be referenced via JavaScript.
+Avoid using IDs. These are far more dificult to maintain and override. These chould be used for Javascript.
 
 ```css
 
 /* Bad */
-
 .myListing {
 	color: rgb(50, 50, 50);
 }
@@ -193,7 +192,6 @@ Even if an element is unique, apply its styles with a class instead of an ID. Le
 }
 
 /* Good */
-
 .my-listing {
 	color: rgb(50, 50, 50);
 }
@@ -208,7 +206,6 @@ There may be instances where we scope a set of styles by nesting them within an 
 ```css
 
 /* Bad */
-
 .employee-entry {
 	background-color: rgb(50, 50, 50);
 
@@ -231,7 +228,6 @@ There may be instances where we scope a set of styles by nesting them within an 
 
 
 /* Good */
-
 .employee-entry {
 	background-color: rgb(50, 50, 50);
 	&.selected {
@@ -252,16 +248,30 @@ There may be instances where we scope a set of styles by nesting them within an 
 
 ```
 
+### For Nesting, Maximum 3 Levels Deep
+
+If you have more than 3 layers, your style is too reliant on HTML structure, overly specific, and not very reusable.
+```css
+/* Bad */
+.employee-entry {
+    .description{
+        .first-name{
+            .last-name{
+                color: white;
+            }
+        }
+    }
+}
+
+```
+
 ### Property Order
 
 When declaring properties within a declaration, order your properties like so:
-
 * Preprocessor Variables
 	* Any scoped LESS/SASS/preprocessor variables should appear first
-
 * Preprocessor Mixins
 	* Any mixins should appear next
-
 * Position Properties
 	* ```position``` should be first
 	* Order of other positional properties does not matter
@@ -272,7 +282,6 @@ When declaring properties within a declaration, order your properties like so:
 		* ```left```
 		* ```float```
 		* ```clear```
-
 * Display/Box Model Properties
 	* ```display``` should be first
 	* Order of other display related properties does not matter
@@ -286,8 +295,7 @@ When declaring properties within a declaration, order your properties like so:
 		* ```margin```
 		* ```padding```
 		* ```border```
-			* ```border-color``` and ```border-radius``` should be placed with Other Styles
-
+			* ```border-color``` and ```border-radius``` should be placed with other styles
 * Other Style Properties
 	* Order does not matter
 	* __However, try your best to group similar styles together__
@@ -300,8 +308,7 @@ When declaring properties within a declaration, order your properties like so:
 		@color: blue; /* LESS variable syntax */
 		.my-mixin: /* LESS mixin syntax */
 		$color: blue; /* SASS variable syntax */
-		@include .my-mixin; /* SASS mixin syntax */
-		@extend .message; /* SASS extend syntax */
+		@extend .my-mixin; /* SASS mixin syntax */
 		/* Positional Properties */
 		position: absolute;
 		top: 10px;
@@ -336,9 +343,8 @@ Use ```px``` for ```font-size```, because it offers absolute control over text. 
 
 ### Variable Placement
 
-If you have a variable that will be referenced throughout all of your sheets, then you should place it within the _variables_ file in your globals directory (see the File Structure/Scaffolding section for more details).
-
-However, if you only need to use a variable within a single style, only define it within that style itself.
+* If you have a variable that will be referenced throughout all of your sheets, then you should place it within the _variables_ file in your globals directory (see the File Structure/Scaffolding section for more details).
+* However, if you only need to use a variable within a single style, only define it within that style itself.
 
 ```css
 
@@ -354,16 +360,13 @@ However, if you only need to use a variable within a single style, only define i
 
 ### When to Create a Variable
 
-Create a variable when you find that you are repeating a resuable constant, such as a color value, mutiple times.
-
-For example, create a variable for a non-skinfile color such as black (represented with ```rgb(0,0,0)```) being used throughout your codebase.
-
-__Before creating a new variable, check to see if an existing variable can be used to accomplish what you need__
-
-For example, to manipulate an existing color variable, see the documentation for the _lighten()_ or _darken()_ method of your chosen preprocessor.
+* Create a variable when you find that you are repeating a resuable constant, such as a color value, mutiple times.
+* For example, create a variable for a non-skinfile color such as black (represented with ```rgb(0,0,0)```) being used throughout your codebase.
 
 
-However, if you had a situation where a value is repeated, but the usages are un-related (for instance, two elements that both have a ```margin: 5px``` where the margin values may not always be the same), then do not create a variable. In this case, we would not create a variable for the ```5px``` value.
+ __Before creating a new variable, check to see if an existing variable can be used to accomplish what you need__
+* For example, to manipulate an existing color variable, see the documentation for the _lighten()_ or _darken()_ method of your chosen preprocessor.
+* However, if you had a situation where a value is repeated, but the usages are un-related (for instance, two elements that both have a ```margin: 5px``` where the margin values may not always be the same), then do not create a variable. In this case, we would not create a variable for the ```5px``` value.
 
 
 ## File Structure/Scaffolding
@@ -404,16 +407,14 @@ main.{less|scss}
 
 ### General Structure
 
-The index.{less|scss} file contained within each directory is responsible for importing all of the other files within that directory.
-
-The main style file will then import all of the index files from each directory. This allows all of the styles to be included in a single build.
+* The index.{less|scss} file contained within each directory is responsible for importing all of the other files within that directory.
+* The main style file will then import all of the index files from each directory. This allows all of the styles to be included in a single build.
 
 
 ### Views
 
-Create a separate style file for each unique view in your application. For instance, if you have a unique page (such as a landing page) in your application, create a file for it here.
-
-For each view file, wrap all of the content with a class tag so that any preprocessor variables defined are scoped to the file itself and as a sanity check to prevent style collisions.
+* Create a separate style file for each unique view in your application. For instance, if you have a unique page (such as a landing page) in your application, create a file for it here.
+* For each view file, wrap all of the content with a class tag so that any preprocessor variables defined are scoped to the file itself and as a sanity check to prevent style collisions.
 
 
 ```css
@@ -438,9 +439,8 @@ For each view file, wrap all of the content with a class tag so that any preproc
 
 ### Components
 
-Create a separate style file for each resuable view component. For example, if you have a React component, create a file for it here.
-
-For each component file, wrap all of the content with a class tag so that any preprocessor variables defined are scoped to the file itself and as a sanity check to prevent style collisions.
+* Create a separate style file for each resuable view component. For example, if you have a React component, create a file for it here.
+* For each component file, wrap all of the content with a class tag so that any preprocessor variables defined are scoped to the file itself and as a sanity check to prevent style collisions.
 
 ```css
 /***********************************
@@ -469,9 +469,8 @@ When creating styles that will be shared across multiple views or components (fo
 
 ### Skins
 
-Skins are variables that create custom looks for the app. For example, you could have a skin for each customer or version of the app you create.
-
-At a minimum, each project should have _default_ and _demo_ skin files.
+* Skins are variables that create custom looks for the app. For example, you could have a skin for each customer or version of the app you create.
+* At a minimum, each project should have _default_ and _demo_ skin files.
 
 
 ## Resources
@@ -481,51 +480,41 @@ Here are some references to resources for common functionality across applicatio
 
 ### CSS Reset
 
-We use a custom CSS Reset file to set browsers to a consistent baseline before we begin styling them.
+* We use a custom CSS Reset file to set browsers to a consistent baseline before we begin styling them.
+* **This should be the first set of styles loaded in your stylesheet.**
+* Click [here](http://www.cssreset.com/what-is-a-css-reset/) for more info about why we use CSS Resets.
+* For the Social Tables CSS Reset/Normalization, use the following file:
 
-**This should be the first set of styles loaded in your stylesheet.**
-
-Click [here](http://www.cssreset.com/what-is-a-css-reset/) for more info about why we use CSS Resets.
-
-For the Social Tables CSS Reset/Normalization, use the following file:
-
-https://github.com/socialtables/css-assets/blob/master/css/reset.css
+{Insert link to Social Tables CSS Reset File}
 
 
 ### Z-Index Management
 
-For Z-Index management, we use the strategy outlined in [the following article](http://www.smashingmagazine.com/2014/06/12/sassy-z-index-management-for-complex-layouts/).
+* For Z-Index management, we use the strategy outlined in [the following article](http://www.smashingmagazine.com/2014/06/12/sassy-z-index-management-for-complex-layouts/).
+* Since the *index()* method is not defined in LESS, we have a custom mixin that can be used to mimic the same functionality, using LESS lists instead of SASS arrays.
 
-Since the *index()* method is not defined in LESS, we have a custom mixin that can be used to mimic the same functionality, using LESS lists instead of SASS arrays.
-
-Link to LESS mixin: https://github.com/socialtables/css-assets/blob/master/less/z-index-mixin.less
+Link to LESS mixin: {Insert link to custom LESS z-index mixin}
 
 
 ### Icon Fonts
 
-For creating/using icons in an application, we use Icon Fonts.
-
-Click [here](http://www.vanseodesign.com/web-design/icon-fonts/) for more info about Icon Fonts.
-
-For creating custom icon fonts, we use Fontello (http://fontello.com/)
+* For creating/using icons in an application, we use Icon Fonts. NOT images.
+* Click [here](http://www.vanseodesign.com/web-design/icon-fonts/) for more info about Icon Fonts.
+* For creating custom icon fonts, we use Fontello (http://fontello.com/)
 
 
 ### Grid Systems
 
-Grid systems allow our applications to be fully responsive based on device screen size/resolution.
-
-Click [here](http://en.wikipedia.org/wiki/Responsive_web_design) for more about grid systems and responsiveness.
-
-We use the default build of the Bootstrap V3 grid system. [Click here](http://getbootstrap.com/css/#grid) to read more.
-
-Use the following grid system file in your projects: https://github.com/socialtables/css-assets/blob/master/css/grid.css
+* Grid systems allow our applications to be fully responsive based on device screen size/resolution.
+* Click [here](http://en.wikipedia.org/wiki/Responsive_web_design) for more about grid systems and responsiveness.
+* We use the default build of the Bootstrap V3 grid system. [Click here](http://getbootstrap.com/css/#grid) to read more.
+* Use the following grid system file in your projects: {insert link to ST Grid file}
 
 
 ### Responsive Utilities
 
-Responsive utilities allow us to conditionally hide/show elements based on the browser viewport width.
-
-For instance, if you needed to hide an element on mobile but have it be seen on anything with a larger screen size,
+* Responsive utilities allow us to conditionally hide/show elements based on the browser viewport width.
+* For instance, if you needed to hide an element on mobile but have it be seen on anything with a larger screen size,
 you would write the following:
 
 ```html
@@ -534,9 +523,10 @@ you would write the following:
 </div>
 ```
 
-We use the Bootstrap V3 responsive utilities. [Click here](http://getbootstrap.com/css/#responsive-utilities) to read more.
+* We use the Bootstrap V3 responsive utilities. [Click here](http://getbootstrap.com/css/#responsive-utilities) to read more.
 
-Use the following responsive utilities file in your projects: https://github.com/socialtables/css-assets/blob/master/css/responsive-utils.css
+Use the following responsive utilities file in your projects: {insert link to ST Responsive utils file}
+
 
 ## Further Reading
 
