@@ -45,13 +45,21 @@ Welcome to the Social Tables CSS Styleguide. Here is where you can learn more ab
 ```css
 
 /* Bad */
-.my-class{
+.my-class {
 	display: block;
+}
+
+.my-class-2 {
+    display: inline-block;
 }
 
 /* Good */
 .my-class {
 	display: block;
+}
+
+.my-class-2 {
+    display: inline-block;
 }
 
 ```
@@ -113,15 +121,13 @@ Welcome to the Social Tables CSS Styleguide. Here is where you can learn more ab
 * Use ```/* */``` for comment blocks.
 * Avoid specifying units for zero values, e.g., use ```margin: 0```; instead of ```margin: 0px;```.
 * Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values.
-
- * For example, if you want to apply a 5px right margin, write ```margin-right: 5px``` instead of ```margin: 0 5px 0 0```.
- * However, if you need to apply a 5px margin to both the right and left, use the shorthand and write ```margin: 0 5px``` vs separate properties for the right and left margins.
+* For example, if you want to apply a 5px right margin, write ```margin-right: 5px``` instead of ```margin: 0 5px 0 0```.
+* However, if you need to apply a 5px margin to both the right and left, use the shorthand and write ```margin: 0 5px``` vs separate properties for the right and left margins.
 
 
 ### Preprocessor Variable Naming
 
 When naming variables in LESS/SASS, use an all lower-case, hyphen separated scheme.
-
 __NOTE:__ LESS variables are prefixed with the _@_ symbol while SASS variables are prefixed with _$_
 
 ```css
@@ -152,7 +158,6 @@ This allows us to maintain a consistent specificity-level amongst our rules.
 ```css
 
 /* Bad */
-
 #my-listing {
 	color: rgb(50, 50, 50);
 }
@@ -163,7 +168,6 @@ li {
 
 
 /* Good */
-
 .my-listing {
 	color: rgb(50, 50, 50);
 }
@@ -173,13 +177,11 @@ li {
 ### Use lower-case with dashes for naming classes, IDs
 
 When naming your classes and IDs, use lower case with dashes to separate multiple words.
-
-Even if an element is unique, apply its styles with a class instead of an ID. Let IDs only be referenced via JavaScript.
+**Avoid using IDs.** These are far more dificult to maintain and override. These chould be used for Javascript.
 
 ```css
 
 /* Bad */
-
 .myListing {
 	color: rgb(50, 50, 50);
 }
@@ -193,7 +195,6 @@ Even if an element is unique, apply its styles with a class instead of an ID. Le
 }
 
 /* Good */
-
 .my-listing {
 	color: rgb(50, 50, 50);
 }
@@ -208,7 +209,6 @@ There may be instances where we scope a set of styles by nesting them within an 
 ```css
 
 /* Bad */
-
 .employee-entry {
 	background-color: rgb(50, 50, 50);
 
@@ -231,7 +231,6 @@ There may be instances where we scope a set of styles by nesting them within an 
 
 
 /* Good */
-
 .employee-entry {
 	background-color: rgb(50, 50, 50);
 	&.selected {
@@ -252,16 +251,31 @@ There may be instances where we scope a set of styles by nesting them within an 
 
 ```
 
+### For Nesting, Maximum 3 Levels Deep
+
+If you have more than 3 layers, your style is too reliant on HTML structure, overly specific, and not very reusable.
+```css
+/* Bad */
+.employee-entry {
+    .description{
+        .first-name{
+            .last-name{
+                color: white;
+            }
+        }
+    }
+}
+
+```
+
+
 ### Property Order
 
 When declaring properties within a declaration, order your properties like so:
-
 * Preprocessor Variables
 	* Any scoped LESS/SASS/preprocessor variables should appear first
-
 * Preprocessor Mixins
 	* Any mixins should appear next
-
 * Position Properties
 	* ```position``` should be first
 	* Order of other positional properties does not matter
@@ -272,7 +286,6 @@ When declaring properties within a declaration, order your properties like so:
 		* ```left```
 		* ```float```
 		* ```clear```
-
 * Display/Box Model Properties
 	* ```display``` should be first
 	* Order of other display related properties does not matter
@@ -286,8 +299,7 @@ When declaring properties within a declaration, order your properties like so:
 		* ```margin```
 		* ```padding```
 		* ```border```
-			* ```border-color``` and ```border-radius``` should be placed with Other Styles
-
+			* ```border-color``` and ```border-radius``` should be placed with other styles
 * Other Style Properties
 	* Order does not matter
 	* __However, try your best to group similar styles together__
