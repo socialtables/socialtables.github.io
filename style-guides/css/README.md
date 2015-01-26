@@ -300,7 +300,8 @@ When declaring properties within a declaration, order your properties like so:
 		@color: blue; /* LESS variable syntax */
 		.my-mixin: /* LESS mixin syntax */
 		$color: blue; /* SASS variable syntax */
-		@extend .my-mixin; /* SASS mixin syntax */
+		@include .my-mixin; /* SASS mixin syntax */
+		@extend .message; /* SASS extend syntax */
 		/* Positional Properties */
 		position: absolute;
 		top: 10px;
@@ -488,7 +489,7 @@ Click [here](http://www.cssreset.com/what-is-a-css-reset/) for more info about w
 
 For the Social Tables CSS Reset/Normalization, use the following file:
 
-{Insert link to Social Tables CSS Reset File}
+https://github.com/socialtables/css-assets/blob/master/css/reset.css
 
 
 ### Z-Index Management
@@ -497,7 +498,7 @@ For Z-Index management, we use the strategy outlined in [the following article](
 
 Since the *index()* method is not defined in LESS, we have a custom mixin that can be used to mimic the same functionality, using LESS lists instead of SASS arrays.
 
-Link to LESS mixin: {Insert link to custom LESS z-index mixin}
+Link to LESS mixin: https://github.com/socialtables/css-assets/blob/master/less/z-index-mixin.less
 
 
 ### Icon Fonts
@@ -517,7 +518,7 @@ Click [here](http://en.wikipedia.org/wiki/Responsive_web_design) for more about 
 
 We use the default build of the Bootstrap V3 grid system. [Click here](http://getbootstrap.com/css/#grid) to read more.
 
-Use the following grid system file in your projects: {insert link to ST Grid file}
+Use the following grid system file in your projects: https://github.com/socialtables/css-assets/blob/master/css/grid.css
 
 
 ### Responsive Utilities
@@ -535,8 +536,7 @@ you would write the following:
 
 We use the Bootstrap V3 responsive utilities. [Click here](http://getbootstrap.com/css/#responsive-utilities) to read more.
 
-Use the following responsive utilities file in your projects: {insert link to ST Responsive utils file}
-
+Use the following responsive utilities file in your projects: https://github.com/socialtables/css-assets/blob/master/css/responsive-utils.css
 
 ## Further Reading
 
