@@ -1,5 +1,7 @@
 # Social Tables JavaScript Style Guide() {
 
+Forked and slightly modified from Airbnb's JavaScript style guide.
+
 ## Table of Contents
 
   1. [QuickView](#quickview)
@@ -31,7 +33,7 @@
 
   - **General**
     + Lines should not be longer than 80 characters
-    + Functions should be < 50 lines **Note: thoughts??**
+    + Functions should be < 50 lines 
     + Semicolons. Use them.
     + Use camelCase for objects, functions, and instances
     + Use PascalCase for constructors and classes
@@ -56,7 +58,7 @@
     + Use Array#slice to copy an array
   
   - **Strings**
-    + **Note: Thoughts on always single quotes vs double quotes? Other say single quotes**
+    + Always use double quotes `""` rather than single quotes `''`
 
   - **Functions**
 
@@ -68,7 +70,7 @@
     + Use one `var` declaration per variable
     + Assign variables at the top of their scope
     + Declare unassigned variables last
-    + Declare one variable per line **Note: thoughts on this?**
+    + Declare one variable per line
     + Use names that make sense. Don't use reserved words. Avoid single letters
 
   - **Hoisting** [Read this section. It's good.](#hoisting)
@@ -91,17 +93,45 @@
       ```
 
   - **Comments**
-    + **NOTE: do people prefer `//` or `/** ... */` for multiline comments?**
-    + Comments should go over the line they refer to rather than to the right on the same line
+    + Please start to use them! Especially for longer, more complex blocks of code. If it took you a while to think about how to write something, then it will take a while for someone to read and understand what is going on.
 
-  - **Spacing Note: thoughts on all of this**
-    + **Note: thoughts on tabs vs spaces for indentation???**
+    + We have not established a standard for `//` vs `/* ... */`, so use whatever makes you :)
+
+    + Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME -- need to figure this out` or `TODO -- need to implement`.
+
+    + Use `// FIXME:` to annotate problems
+
+      ```javascript
+      function Calculator() {
+
+        // FIXME: shouldn't use a global here
+        total = 0;
+
+        return this;
+      }
+      ```
+
+    + Use `// TODO:` to annotate solutions to problems
+
+      ```javascript
+      function Calculator() {
+
+        // TODO: total should be configurable by an options param
+        this.total = 0;
+
+        return this;
+      }
+    ```
+
+  - **Spacing** 
+    + Use tabs for spacing
     + Place 1 space before the leading brace. Yes: `function() {`. No: `function(){`
     + Focus on external spacing rather than internal spacing and follow conventional English.
 
     ```javascript
       //bad
       for ( var i = 0 ; i < 3 ; i++ )
+      for(var i=0;i<3;i++){
 
       //good
       for (var i = 0; i < 3; i++)
@@ -116,7 +146,8 @@
     + Yes: `if (blah) {`. No: `if(blah){`
     + Any `,` and `;` must not have preceding space
 
-  - [**Resources**](#resources) 
+  - [**Resources**](#resources)
+  - This is the end of the QuickView section. Please read the rest of the guide for more details 
 
 
   
@@ -157,7 +188,7 @@
 
 ## Objects
 
-  - Use the literal syntax for object creation.
+  - Use the literal syntax for object creation. Unless you need to do this for setting immutable keys.
 
     ```javascript
     // bad
@@ -259,20 +290,20 @@
 
 ## Strings
 
-  - Use single quotes `''` for strings
+  - Use double quotes `""` for strings
 
     ```javascript
     // bad
-    var name = "Bob Parr";
-
-    // good
     var name = 'Bob Parr';
 
+    // good
+    var name = "Bob Parr";
+
     // bad
-    var fullName = "Bob " + this.lastName;
+    var fullName = 'Bob ' + this.lastName;
 
     // good
-    var fullName = 'Bob ' + this.lastName;
+    var fullName = "Bob " + this.lastName;
     ```
 
   - Strings longer than 80 characters should be written across multiple lines using string concatenation.
@@ -289,53 +320,9 @@
     fast.';
 
     // good
-    var errorMessage = 'This is a super long error that was thrown because ' +
-      'of Batman. When you stop to think about how Batman had anything to do ' +
-      'with this, you would get nowhere fast.';
-    ```
-
-  - When programmatically building up a string, use Array#join instead of string concatenation. Mostly for IE: [jsPerf](http://jsperf.com/string-vs-array-concat/2).
-
-    ```javascript
-    var items;
-    var messages;
-    var length;
-    var i;
-
-    messages = [{
-      state: 'success',
-      message: 'This one worked.'
-    }, {
-      state: 'success',
-      message: 'This one worked as well.'
-    }, {
-      state: 'error',
-      message: 'This one did not work.'
-    }];
-
-    length = messages.length;
-
-    // bad
-    function inbox(messages) {
-      items = '<ul>';
-
-      for (i = 0; i < length; i++) {
-        items += '<li>' + messages[i].message + '</li>';
-      }
-
-      return items + '</ul>';
-    }
-
-    // good
-    function inbox(messages) {
-      items = [];
-
-      for (i = 0; i < length; i++) {
-        items[i] = messages[i].message;
-      }
-
-      return '<ul><li>' + items.join('</li><li>') + '</li></ul>';
-    }
+    var errorMessage = "This is a super long error that was thrown because " +
+      "of Batman. When you stop to think about how Batman had anything to do " +
+      "with this, you would get nowhere fast.";
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -362,7 +349,7 @@
     })();
     ```
 
-  - Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
+  - **If and only if** you need to define a function inside a non-function block (if, while, etc), then follow this convention: do not declare the function in the non-function block. Instead, assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
   - **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
 
     ```javascript
@@ -402,7 +389,7 @@
 
 ## Properties
 
-  - Use dot notation when accessing properties.
+  - Use dot notation when accessing properties when possible. You obviously can't use this if the property name has dashes or special characters
 
     ```javascript
     var luke = {
@@ -694,14 +681,14 @@
 
 ## Blocks
 
-  - Use braces with all multi-line blocks.
+  - Always use braces. Single or multi-line blocks.
 
     ```javascript
     // bad
     if (test)
       return false;
 
-    // good
+    // bad
     if (test) return false;
 
     // good
@@ -723,67 +710,9 @@
 
 ## Comments
 
-  - Use `/** ... */` for multiline comments. Include a description, specify types and values for all parameters and return values.
+  - Please start to use them! Especially for longer, more complex blocks of code. If it took you a while to think about how to write something, then it will take a while for someone to read and understand what is going on.
 
-    ```javascript
-    // bad
-    // make() returns a new element
-    // based on the passed in tag name
-    //
-    // @param {String} tag
-    // @return {Element} element
-    function make(tag) {
-
-      // ...stuff...
-
-      return element;
-    }
-
-    // good
-    /**
-     * make() returns a new element
-     * based on the passed in tag name
-     *
-     * @param {String} tag
-     * @return {Element} element
-     */
-    function make(tag) {
-
-      // ...stuff...
-
-      return element;
-    }
-    ```
-
-  - Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
-
-    ```javascript
-    // bad
-    var active = true;  // is current tab
-
-    // good
-    // is current tab
-    var active = true;
-
-    // bad
-    function getType() {
-      console.log('fetching type...');
-      // set the default type to 'no type'
-      var type = this._type || 'no type';
-
-      return type;
-    }
-
-    // good
-    function getType() {
-      console.log('fetching type...');
-
-      // set the default type to 'no type'
-      var type = this._type || 'no type';
-
-      return type;
-    }
-    ```
+  - We have not established a standard for `//` vs `/* ... */`, so use whatever makes you :)
 
   - Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME -- need to figure this out` or `TODO -- need to implement`.
 
@@ -816,24 +745,7 @@
 
 ## Whitespace
 
-  - Use soft tabs set to 2 spaces
-
-    ```javascript
-    // bad
-    function() {
-    ∙∙∙∙var name;
-    }
-
-    // bad
-    function() {
-    ∙var name;
-    }
-
-    // good
-    function() {
-    ∙∙var name;
-    }
-    ```
+  - Use tabs for spacing
 
   - Place 1 space before the leading brace.
 
@@ -1012,6 +924,16 @@
       return name;
     })();
 
+    // good
+    var fruits = [apples, bananas, cherries];
+
+    // good
+    var myObject = {
+      a: 1,
+      b: 2,
+      c: 3
+    };
+
     // good (guards against the function becoming an argument when two files with IIFEs are concatenated)
     ;(function() {
       var name = 'Skywalker';
@@ -1020,6 +942,18 @@
     ```
 
     [Read more](http://stackoverflow.com/a/7365214/1712802).
+
+  - Semicolons should be included at the end of function expressions, but not at the end of function declarations. The distinction is best illustrated with an example:
+
+    ```javascript
+    var foo = function() {
+      return true;
+    };  // semicolon here.
+
+    function foo() {
+      return true;
+    }  // no semicolon here.
+    ```
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -1453,7 +1387,7 @@
 
 (The MIT License)
 
-Copyright (c) 2014 Airbnb
+Copyright (c) 2015 Social Tables
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
