@@ -2,7 +2,7 @@
 
 This is the official JavaScript style guide for Social Tables.
 
-**Please read through this guide in before committing code to the Social Tables codebase**
+**Please read through this guide before committing code at Social Tables**
 
 Forked and slightly modified from Airbnb's JavaScript style guide.
 
