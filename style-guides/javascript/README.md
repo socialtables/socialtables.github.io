@@ -1,4 +1,8 @@
-# Social Tables JavaScript Style Guide() {
+# Social Tables JavaScript Style Guide
+
+This is the official JavaScript style guide for Social Tables.
+
+**Please read through this guide in before committing code to the Social Tables codebase**
 
 Forked and slightly modified from Airbnb's JavaScript style guide.
 
@@ -1409,5 +1413,3 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 **[⬆ back to top](#table-of-contents)**
-
-# };
