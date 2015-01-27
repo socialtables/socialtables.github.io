@@ -46,20 +46,24 @@ Welcome to the Social Tables CSS Styleguide. Here is where you can learn more ab
 
 /* Bad */
 .my-class {
-	display: block;
+	display: block; width: 500px; height: 100px;
 }
 
 .my-class-2 {
-    display: inline-block;
+    display: inline-block; width: 500px; height: 100px;
 }
 
 /* Good */
 .my-class {
 	display: block;
+	width: 500px;
+	height: 100px;
 }
 
 .my-class-2 {
     display: inline-block;
+	width: 500px;
+	height: 100px;    
 }
 
 ```
