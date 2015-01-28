@@ -17,7 +17,7 @@ Forked and slightly modified from Airbnb's JavaScript style guide.
   1. [Properties](#properties)
   1. [Variables](#variables)
   1. [Hoisting](#hoisting)
-  1. [](#conditional-expressions--equality)
+  1. [Conditional Expressions & Equality](#conditional-expressions--equality)
   1. [Blocks](#blocks)
   1. [Comments](#comments)
   1. [Whitespace](#whitespace)
@@ -636,7 +636,7 @@ Forked and slightly modified from Airbnb's JavaScript style guide.
 
 
 
-## 
+## Conditional Expressions & Equality
 
   - Use `===` and `!==` over `==` and `!=`.
   - Conditional expressions are evaluated using coercion with the `ToBoolean` method and always follow these simple rules:
