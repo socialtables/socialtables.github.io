@@ -17,7 +17,7 @@ Forked and slightly modified from Airbnb's JavaScript style guide.
   1. [Properties](#properties)
   1. [Variables](#variables)
   1. [Hoisting](#hoisting)
-  1. [Conditional Expressions & Equality](#conditional-expressions--equality)
+  1. [](#conditional-expressions--equality)
   1. [Blocks](#blocks)
   1. [Comments](#comments)
   1. [Whitespace](#whitespace)
@@ -82,6 +82,7 @@ Forked and slightly modified from Airbnb's JavaScript style guide.
   - **Conditional Expressions & Equality**
     + Use `===` and `!==` over `==` and `!=`
     + Avoid duplication like `if (name !== '')`. Use `if (name)` instead.
+    + Refactor complex conditional statements into variables describing what they are evaluating.
 
   - **Blocks**
     + Separate into multiple lines and use braces
@@ -635,7 +636,7 @@ Forked and slightly modified from Airbnb's JavaScript style guide.
 
 
 
-## Conditional Expressions & Equality
+## 
 
   - Use `===` and `!==` over `==` and `!=`.
   - Conditional expressions are evaluated using coercion with the `ToBoolean` method and always follow these simple rules:
@@ -677,6 +678,22 @@ Forked and slightly modified from Airbnb's JavaScript style guide.
       // ...stuff...
     }
     ```
+    
+  - Refactor complex logic expressions into variables describing what is being evaluated. This makes logic expressions more succient and quicker to comprehend.
+  
+  ```javascript
+  // bad
+  if( user.status === owner && team.contains(user) && isValid(user) ) {
+    // do something...
+  }
+  
+  // good
+  var isAnOwner = user.status === owner && team.contains(user) && isValid(user);
+  if(isAnOwner) {
+    // do something...
+  }
+  
+  ```
 
   - For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll
 
