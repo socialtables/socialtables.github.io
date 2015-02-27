@@ -516,6 +516,7 @@ Since the *index()* method is not defined in LESS, we have a custom mixin that c
 
 Link to LESS mixin: https://github.com/socialtables/css-assets/blob/master/less/z-index-mixin.less
 
+REMINDER: Elements that have position: static will NOT respect z-index, so make sure that the position attribute is set to a non-static value.
 
 ### Icon Fonts
 
