@@ -26,6 +26,13 @@ class OpenSourceItem extends React.Component {
 	}
 }
 
+OpenSourceItem.propTypes = {
+	styles: React.PropTypes.shape({
+		container: React.PropTypes.object.isRequired,
+		header: React.PropTypes.object.isRequired,
+		image: React.PropTypes.object.isRequired
+	}).isRequired
+}
 OpenSourceItem.defaultProps = {
 	styles: {
 		container: {

@@ -58,6 +58,12 @@ const OpenSource = ({styles}) => {
 	);
 }
 
+OpenSource.propTypes = {
+	styles: React.PropTypes.shape({
+		gridContainer: React.PropTypes.object.isRequired
+	}).isRequired
+};
+
 OpenSource.defaultProps = {
 	styles: {
 		gridContainer: {

@@ -10,6 +10,9 @@ const Header = ({children, style}) => {
 		/>
 	);
 }
+Header.propTypes = {
+	style: React.PropTypes.object.isRequired
+};
 
 Header.defaultProps = {
 	style: {

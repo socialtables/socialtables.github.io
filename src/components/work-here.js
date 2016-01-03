@@ -15,6 +15,12 @@ const WorkHere = ({styles}) => {
 	);
 }
 
+WorkHere.propTypes = {
+	styles: React.PropTypes.shape({
+		p: React.PropTypes.object.isRequired
+	}).isRequired
+};
+
 WorkHere.defaultProps = {
 	styles: {
 		p: {

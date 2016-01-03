@@ -19835,6 +19835,9 @@
 			showMenuIconButton: false
 		});
 	};
+	Header.propTypes = {
+		style: React.PropTypes.object.isRequired
+	};
 	
 	Header.defaultProps = {
 		style: {
@@ -51835,6 +51838,12 @@
 		);
 	};
 	
+	OpenSource.propTypes = {
+		styles: React.PropTypes.shape({
+			gridContainer: React.PropTypes.object.isRequired
+		}).isRequired
+	};
+	
 	OpenSource.defaultProps = {
 		styles: {
 			gridContainer: {
@@ -51875,6 +51884,10 @@
 		);
 	};
 	
+	SectionHeader.propTypes = {
+		style: React.PropTypes.object.isRequired
+	};
+	
 	SectionHeader.defaultProps = {
 		style: {
 			fontSize: 24,
@@ -51912,6 +51925,10 @@
 			{ style: style },
 			children
 		);
+	};
+	
+	SectionInfo.propTypes = {
+		style: React.PropTypes.object.isRequired
 	};
 	
 	SectionInfo.defaultProps = {
@@ -52005,6 +52022,13 @@
 		return OpenSourceItem;
 	})(React.Component);
 	
+	OpenSourceItem.propTypes = {
+		styles: React.PropTypes.shape({
+			container: React.PropTypes.object.isRequired,
+			header: React.PropTypes.object.isRequired,
+			image: React.PropTypes.object.isRequired
+		}).isRequired
+	};
 	OpenSourceItem.defaultProps = {
 		styles: {
 			container: {
@@ -52076,6 +52100,12 @@
 				" and contact us if anything looks like a fit!"
 			)
 		);
+	};
+	
+	WorkHere.propTypes = {
+		styles: React.PropTypes.shape({
+			p: React.PropTypes.object.isRequired
+		}).isRequired
 	};
 	
 	WorkHere.defaultProps = {
