@@ -11,5 +11,5 @@ The goal of this repo is to codify our engineering culture and keep clear our wo
 1. pull
 2. npm run dev
 3.  + t
-4. python -m SimpleHTTPServer 8000
+4. npm start
 5. navigate to localhost:8000

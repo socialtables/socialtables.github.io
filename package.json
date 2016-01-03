@@ -22,7 +22,8 @@
     "material-ui": "^0.14.0",
     "react": "^0.14.5",
     "react-dom": "^0.14.5",
-    "react-tap-event-plugin": "^0.2.1"
+    "react-tap-event-plugin": "^0.2.1",
+    "xhr": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",

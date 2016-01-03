@@ -32,14 +32,15 @@ OpenSourceItem.propTypes = {
 		header: React.PropTypes.object.isRequired,
 		image: React.PropTypes.object.isRequired
 	}).isRequired
-}
+};
+
 OpenSourceItem.defaultProps = {
 	styles: {
 		container: {
 			width: "31%",
 			height: 300,
 			margin: 10,
-			marginBottom: 100
+			marginBottom: "10%"
 		},
 		header: {
 			color: colors.veryDarkGray,

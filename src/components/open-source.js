@@ -1,76 +1,67 @@
 import SectionHeader from "./section-header";
 import SectionInfo from "./section-info";
 import OpenSourceItem from "./open-source-item";
-const OpenSource = ({styles}) => {
-	return (
-		<div>
-			<SectionHeader>Open Source</SectionHeader>
-			<SectionInfo>
-				We make an effort to contribute back to the tools we use, and work to contribute tools
-				we find useful interally back to the community at large. Below you can find links to some
-				of our active open source projects.
-			</SectionInfo>
-			<div style={styles.gridContainer}>
-				<OpenSourceItem 
-					key="react-user-tour"
-					image="./assets/react-user-tour.png" 
-					url="https://github.com/socialtables/react-user-tour"
-				> 
-					React User Tour
-				</OpenSourceItem>
-				<OpenSourceItem 
-					key="react-infinity-menu"
-					image="./assets/react-infinity-menu.png" 
-					url="https://github.com/socialtables/react-infinity-menu"
-				> 
-					React Infinity Menu
-				</OpenSourceItem>
-				<OpenSourceItem 
-					key="obj-2-json"
-					image="./assets/obj-2-json.png" 
-					url="https://github.com/socialtables/obj2json"
-				> 
-					obj2json
-				</OpenSourceItem>
-				<OpenSourceItem 
-					key="socketio-store"
-					image="./assets/socketio-store.png" 
-					url="https://github.com/socialtables/socket.io-store"
-				> 
-					socket.io store
-				</OpenSourceItem>
-				<OpenSourceItem 
-					key="react-image-fallback"
-					image="./assets/react-image-fallback.png" 
-					url="https://github.com/socialtables/react-image-fallback"
-				> 
-					React Image Fallback
-				</OpenSourceItem>
-				<OpenSourceItem 
-					key="redux-unhandled-action"
-					image="./assets/redux-unhandled-action.png" 
-					url="https://github.com/socialtables/redux-unhandled-action"
-				> 
-					Redux Unhandled Action
-				</OpenSourceItem>
+import xhr from "xhr";
+
+class OpenSource extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			openSourceItems: []
+		};
+	}
+
+	componentDidMount() {
+		xhr({uri: "/data/os.json"}, (err, res, body) => {
+			if(!err) {
+				this.setState({
+					openSourceItems: JSON.parse(body)
+				});
+			}
+		});
+	}
+
+	render() {
+		const { styles } = this.props;
+		const openSourceItems = this.state.openSourceItems.map(({name, image, url}) => {
+			return <OpenSourceItem key={name} image={image} url={url}> {name}</OpenSourceItem>;
+		});
+		return (
+			<div style={styles.section}>
+				<SectionHeader>Open Source</SectionHeader>
+				<SectionInfo>
+					We make an effort to contribute back to the tools we use, and work to contribute tools
+					we find useful interally back to the community at large. Below you can find links to some
+					of our active open source projects.
+				</SectionInfo>
+				<div style={styles.gridContainer}>
+					{openSourceItems}
+				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 }
 
 OpenSource.propTypes = {
 	styles: React.PropTypes.shape({
+		section: React.PropTypes.object.isRequired,
 		gridContainer: React.PropTypes.object.isRequired
 	}).isRequired
 };
 
 OpenSource.defaultProps = {
 	styles: {
+		section: {
+			display: "flex",
+			flexDirection: "column",
+			padding: 10
+		},
 		gridContainer: {
 			display: "flex",
 			flexWrap: "wrap",
 			alignItems: "center",
-			justifyContent: "center"
+			justifyContent: "center",
+			padding: 5
 		}
 	}
 };
