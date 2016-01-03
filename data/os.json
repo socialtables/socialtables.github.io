@@ -1,0 +1,32 @@
+[
+	{
+		"name": "React User Tour",
+		"image": "./assets/react-user-tour.png",
+		"url": "https://github.com/socialtables/react-user-tour"
+	},
+	{
+		"name": "React Infinity Menu",
+		"image": "./assets/react-infinity-menu.png",
+		"url": "https://github.com/socialtables/react-infinity-menu"
+	},
+	{
+		"name": "obj2json",
+		"image": "./assets/obj-2-json.png",
+		"url": "https://github.com/socialtables/obj2json"
+	},
+	{
+		"name": "socket.io store",
+		"image": "./assets/socketio-store.png",
+		"url": "https://github.com/socialtables/socket.io-store"
+	},
+	{
+		"name": "React Image Fallback",
+		"image": "./assets/react-image-fallback.png",
+		"url": "https://github.com/socialtables/react-image-fallback"
+	},
+	{
+		"name": "Redux Unhandled Action",
+		"image": "./assets/redux-unhandled-action.png",
+		"url": "https://github.com/socialtables/redux-unhandled-action"
+	}
+]
