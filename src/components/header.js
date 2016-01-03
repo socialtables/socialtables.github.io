@@ -5,7 +5,7 @@ const Header = ({children, style}) => {
 	return (
 		<AppBar 
 			style={style}
-			title="Social Tables Engineering"
+			title={children}
 			showMenuIconButton={false}
 		/>
 	);
