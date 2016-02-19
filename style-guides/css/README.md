@@ -494,6 +494,18 @@ At a minimum, each project should have _default_ and _demo_ skin files.
 
 Here are some references to resources for common functionality across applications. They can be downloaded and placed into your file structure.
 
+### Official Colors
+
+According to [our company branding guidelines](https://app.frontify.com/d/D1f3khsW7KQG/social-tables-style-guide), we have a set of specific colors that we use across our products. To use these colors as LESS variables in your code, you can install the `@socialtables/css-assetts` private NPM module to your project, and then within your LESS file, you can import the [colors.less](https://github.com/socialtables/css-assets/blob/master/less/colors.less) file and reference the company colors:
+
+```less
+@import "~@socialtables/css-assets/less/colors.less";
+
+.my-class {
+	background: @st-pink;
+}
+
+```
 
 ### CSS Reset
 
@@ -565,3 +577,5 @@ For further clarification on the concepts mentioned in the guide, please read th
 * [CSS Positioning 101](http://alistapart.com/article/css-positioning-101)
 * [CSS Specificity](http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/)
 * [CSS Psuedo Elements (::after, ::before)](http://css-tricks.com/almanac/selectors/a/after-and-before/)
+* [Social Tables Branding Guidelines](https://app.frontify.com/d/D1f3khsW7KQG/social-tables-style-guide/)
+* [Social Tables css-assetts module](https://github.com/socialtables/css-assets)
