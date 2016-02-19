@@ -567,6 +567,10 @@ We use the Bootstrap V3 responsive utilities. [Click here](http://getbootstrap.c
 
 Use the following responsive utilities file in your projects: https://github.com/socialtables/css-assets/blob/master/css/responsive-utils.css
 
+### React-Component Toolkit
+
+Recently, we have begun working to abstract all of our common UI patterns into React component UI toolkit. For further information regarding the toolkit, [please check out the repository](https://github.com/socialtables/st-ui-toolkit)
+
 ## Further Reading
 
 For further clarification on the concepts mentioned in the guide, please read the following articles:
@@ -579,3 +583,4 @@ For further clarification on the concepts mentioned in the guide, please read th
 * [CSS Psuedo Elements (::after, ::before)](http://css-tricks.com/almanac/selectors/a/after-and-before/)
 * [Social Tables Branding Guidelines](https://app.frontify.com/d/D1f3khsW7KQG/social-tables-style-guide/)
 * [Social Tables css-assetts module](https://github.com/socialtables/css-assets)
+* [Social Tables ST-UI-Toolkit](https://github.com/socialtables/st-ui-toolkit)
