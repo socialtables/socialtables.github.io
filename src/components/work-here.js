@@ -8,7 +8,7 @@ const WorkHere = ({styles}) => {
 			<SectionHeader>Work here</SectionHeader>
 			<SectionInfo style={styles.p}>
 				We&apos;re always looking to bring on new people who are as excited about technology as we are.
-				Take a look at our <a href="https://jobs.lever.co/socialtables">job listings</a> and contact
+				Take a look at our <a href="https://www.socialtables.com/careers/">job listings</a> and contact
 				us if anything looks like a fit!
 			</SectionInfo>
 		</div>
