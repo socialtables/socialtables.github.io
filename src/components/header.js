@@ -4,7 +4,7 @@ import colors from "../styles";
 const HeaderIcon = () => {
 	return (
 		<a href="https://www.socialtables.com/" alt="www.socialtables.com">
-			<img src="https://14563-presscdn-0-34-pagely.netdna-ssl.com/wp-content/themes/socialtables/images/logo-white.svg" />
+			<img src="./assets/logo.png" />
 		</a>
 	);
 };
